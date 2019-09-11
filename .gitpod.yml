@@ -18,8 +18,8 @@ tasks:
 
   - name: Migrate
     command: >
-          mysql -e 'create database laravel';
-          mysql -e 'use laravel';
+          mysql -e 'create database cats';
+          mysql -e 'use cats';
           php artisan migrate;
           php artisan db:seed;
   - name: Tests
