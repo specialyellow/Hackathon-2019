@@ -15,6 +15,11 @@ tasks:
     command: >
         apachectl start;
         multitail /var/log/apache2/error.log -I /var/log/apache2/access.log
+
   - name: Migrate
     command: >
+          mysql
+          create database laravel
+          user laravel
+          quit
           php artisan migrate
