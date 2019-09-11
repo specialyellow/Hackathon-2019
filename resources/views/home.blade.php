@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laravel</title>
+        <title>Laravel XXXXXXX</title>
 
 	<!-- bootstrap v4.0.0 -->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
