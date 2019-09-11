@@ -22,3 +22,6 @@ tasks:
           mysql -e 'use laravel';
           php artisan migrate;
           php artisan db:seed;
+  - name: Tests
+    command: >
+          vendor/bin/phpunit;
