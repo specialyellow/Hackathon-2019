@@ -18,8 +18,7 @@ tasks:
 
   - name: Migrate
     command: >
-          mysql
-          create database laravel
-          user laravel
-          quit
-          php artisan migrate
+          mysql -e 'create database laravel';
+          mysql -e 'use laravel';
+          php artisan migrate;
+          php artisan db:seed;
