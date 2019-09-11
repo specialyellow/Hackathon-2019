@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laravel</title>
+        <title>Cats</title>
 
 	<!-- bootstrap v4.0.0 -->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -34,7 +34,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="section-title text-center">
-							<h2>Our Teams Cats</h2>
+							<h2>Our Teams Lions</h2>
 							<p>As we all know, cats own teh internets, so here are our cats.</p>
 						</div>
 					</div>
