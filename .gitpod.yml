@@ -7,7 +7,7 @@ ports:
     onOpen: ignore
 tasks:
   - init: composer install
-    command: echo "Hallo"
+    command: echo "Dependancies Installed"
   - name: MySQL
     command: >
         mysqld
@@ -15,3 +15,6 @@ tasks:
     command: >
         apachectl start;
         multitail /var/log/apache2/error.log -I /var/log/apache2/access.log
+  - name: Migrate
+    command: >
+          php artisan migrate
