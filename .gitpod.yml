@@ -6,7 +6,7 @@ ports:
   - port: 3306
     onOpen: ignore
 tasks:
-  - command: composer install
+  - init: composer install
     command: echo "Dependancies Installed"
   - name: MySQL
     command: >
