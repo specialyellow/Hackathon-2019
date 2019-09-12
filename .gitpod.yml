@@ -6,7 +6,7 @@ ports:
   - port: 3306
     onOpen: ignore
 tasks:
-  - before: touch /tmp/.npm-lock &&
+  - init: touch /tmp/.npm-lock &&
             composer install &&
             rm /tmp/.npm-lock
     command: echo "Dependancies Installed"
