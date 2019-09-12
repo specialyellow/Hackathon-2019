@@ -7,7 +7,13 @@ ports:
     onOpen: ignore
 tasks:
   - init: composer install
-    command: echo "Dependancies Installed"
+    command: echo "Creating database"
+          mysql -e 'create database cats';
+          mysql -e 'use cats';
+    command: php artisan migrate
+    command: php artisan db:seed
+    command: vendor/bin/phpunit
+
   - name: MySQL
     command: >
         mysqld
