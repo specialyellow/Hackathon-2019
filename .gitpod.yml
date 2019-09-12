@@ -26,5 +26,6 @@ tasks:
           php artisan migrate;
           php artisan db:seed;
   - name: Tests
+    init: sleep 1 && while [ -f /tmp/.npm-lock ]; do sleep 1; done
     command: >
           vendor/bin/phpunit;
