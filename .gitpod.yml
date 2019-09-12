@@ -17,12 +17,11 @@ tasks:
     command: >
         apachectl start;
         multitail /var/log/apache2/error.log -I /var/log/apache2/access.log
-
   - name: Migrate
     init: sleep 1 && while [ -f /tmp/.npm-lock ]; do sleep 1; done
     command: >
           mysql -e 'create database cats';
           mysql -e 'use cats';
-          php artisan migrate;
-          php artisan db:seed;
-          vendor/bin/phpunit;
+          php artisan migrate &&
+          php artisan db:seed &&
+          vendor/bin/phpunit
