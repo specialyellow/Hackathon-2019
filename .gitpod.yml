@@ -8,6 +8,14 @@ ports:
 tasks:
   - init: composer install
     command: echo "Dependancies Installed"
+    command: >
+          mysql -e 'create database cats';
+          mysql -e 'use cats';
+          php artisan migrate;
+          php artisan db:seed;
+    command: echo "Database created and seeded"
+    command: >
+          vendor/bin/phpunit;
   - name: MySQL
     command: >
         mysqld
@@ -15,13 +23,3 @@ tasks:
     command: >
         apachectl start;
         multitail /var/log/apache2/error.log -I /var/log/apache2/access.log
-
-  - name: Migrate
-    command: >
-          mysql -e 'create database cats';
-          mysql -e 'use cats';
-          php artisan migrate;
-          php artisan db:seed;
-  - name: Tests
-    command: >
-          vendor/bin/phpunit;
