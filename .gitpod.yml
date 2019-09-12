@@ -6,21 +6,22 @@ ports:
   - port: 3306
     onOpen: ignore
 tasks:
-- init: >
-      touch /tmp/.composer-lock &&
-      composer install &&
-      rm /tmp/.composer-lock
+  - init: composer install
+    command: echo "Dependancies Installed"
   - name: MySQL
-    before: >
+    command: >
         mysqld
   - name: Apache
-    before: >
+    command: >
         apachectl start;
         multitail /var/log/apache2/error.log -I /var/log/apache2/access.log
-  - init: sleep 1 && while [ -f /tmp/.composer-lock ]; do sleep 1; done
-    command: echo "Creating database";
+
+  - name: Migrate
+    command: >
           mysql -e 'create database cats';
           mysql -e 'use cats';
-    command: php artisan migrate
-    command: php artisan db:seed
-    command: vendor/bin/phpunit
+          php artisan migrate;
+          php artisan db:seed;
+  - name: Tests
+    command: >
+          vendor/bin/phpunit;
