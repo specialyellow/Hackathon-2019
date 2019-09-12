@@ -6,7 +6,9 @@ ports:
   - port: 3306
     onOpen: ignore
 tasks:
-  - before: composer install
+  - before: touch /tmp/.npm-lock &&
+            composer install &&
+            rm /tmp/.npm-lock
     command: echo "Dependancies Installed"
   - name: MySQL
     command: >
@@ -17,6 +19,7 @@ tasks:
         multitail /var/log/apache2/error.log -I /var/log/apache2/access.log
 
   - name: Migrate
+    init: sleep 1 && while [ -f /tmp/.npm-lock ]; do sleep 1; done
     command: >
           mysql -e 'create database cats';
           mysql -e 'use cats';
