@@ -7,13 +7,13 @@ ports:
     onOpen: ignore
 tasks:
   - init: composer install
-    command: echo "Dependancies Installed"
+    command: echo "Dependancies Installed";
     command: >
           mysql -e 'create database cats';
           mysql -e 'use cats';
           php artisan migrate;
           php artisan db:seed;
-    command: echo "Database created and seeded"
+    command: echo "Database created and seeded";
     command: >
           vendor/bin/phpunit;
   - name: MySQL
@@ -22,4 +22,4 @@ tasks:
   - name: Apache
     command: >
         apachectl start;
-        multitail /var/log/apache2/error.log -I /var/log/apache2/access.log
+        multitail /var/log/apache2/error.log -I /var/log/apache2/access.log;
